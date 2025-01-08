@@ -1,0 +1,76 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --text-color: white;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: no-repeat top/cover url('../BG-IMG/portfolio-home-bg.jpg');
+    z-index: 1;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 150%;
+    background: inherit;
+    filter: blur(40px);
+    z-index: -1;
+}
+
+.navbar {
+    width: 100%;
+    height: 5rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: space-between;
+}
+
+.navbar .nav ul {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 0;
+    list-style: none;
+}
+
+.nav a  {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+#home {
+    display: flex;
+    height: 100vh;          /* Full høgd for seksjonen */
+    padding: 1rem;          /* Litt padding for betre spacing */
+}
+
+.introduction {
+    font-weight: 700;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    text-align: center;     /* Sentraliser teksten */
+    margin: 0 auto;         /* Auto margin for horisontal sentrering */
+    max-width: 600px;       /* Sett maks breidde for teksten */
+    width: 100%;            /* Tilpass breidda til skjermstorleiken */
+    height: fit-content;
+    line-height: 1.6;       /* Forbetre linjeavstand */
+}
+
+#vtmp {
+    font-size: 2rem;
+}

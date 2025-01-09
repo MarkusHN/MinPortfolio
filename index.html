@@ -1,40 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CSS/main.css" />
+    <script src="JS/script.js"></script>
+    <title>Min Portfolio</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="CSS/main.css" />
-  <title>Min Portfolio</title>
-</head>
-
-<body>
-
-  <header>
-    <div class="navbar">
-      <div class="nav">
-        <ul>
-          <li><a href="#home">Hjem</a></li>
-          <li><a href="#">Om Meg</a></li>
-          <li><a href="#">Mine Prosjekt</a></li>
-          <li><a href="#">Kontakt Informasjon</a></li>
-        </ul>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="nav">
+          <ul>
+            <li><a href="#home">Hjem</a></li>
+            <li><a href="#">Om Meg</a></li>
+            <li><a href="#">Mine Prosjekt</a></li>
+            <li><a href="#">Kontakt Informasjon</a></li>
+            <li><a href="#">CV</a></li>
+            <li><a onclick="openAddModal()">Legg til Prosjekt</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </header>
-  <section id="home">
-    <div class="introduction">
-      <p id="vtmp">Velkommen til min Portefølje!</p>
-      <p id="abt">Eg er ein IT-elev på Stord vgs som fullfører skulegangen i år og ser fram til å starte læretida. Eg
-        har ei stor interesse for teknologi og programmering, og gjennom skulen har eg fått erfaring med ulike system og
-        løysingar som eg gler meg til å bruke i arbeidslivet.</p>
-      <!-- <p>Eg er ein 17-år (18 til sommaren) gammal IT-elev på Stord vidaregåande skule, der eg no går andre året på Informasjonsteknologi
+    </header>
+    <section id="home">
+      <div class="introduction">
+        <p id="vtmp">Velkommen til min Portefølje!</p>
+        <p id="abt">
+          Eg er ein IT-elev på Stord vgs som fullfører skulegangen i år og ser
+          fram til å starte læretida. Eg har ei stor interesse for teknologi og
+          programmering, og gjennom skulen har eg fått erfaring med ulike system
+          og løysingar som eg gler meg til å bruke i arbeidslivet.
+        </p>
+        <!-- <p>Eg er ein 17-år (18 til sommaren) gammal IT-elev på Stord vidaregåande skule, der eg no går andre året på Informasjonsteknologi
         og medieproduksjon. Etter fleire år med interesse for teknologi og programmering, er eg snart ferdig med
         skulegangen og klar til å ta steget ut i læretid. Eg er motivert, lærevillig og har ein lidenskap for å finne
         løysingar på komplekse problem. Gjennom skulen har eg fått erfaring med ulike programmeringsspråk, nettverk og
         teknologiar, og eg ser fram til å bruke kunnskapen min til å bidra i arbeidslivet.</p> -->
+      </div>
+    </section>
+    <div id="add-modal" class="modal">
+      <div class="add-modal-content">
+        <span class="close" onclick="closeAddModal()">&times;</span>
+        <div>
+          <label for="image">Bilde-URL:</label><br />
+          <input id="image" type="text" placeholder="URL til Bilde" />
+        </div>
+        <div>
+          <label>Tittel:</label><br />
+          <input id="title" type="text" placeholder="Legg til Tittel" />
+        </div>
+        <div>
+          <label>Laga Av:</label><br />
+          <input id="creator" type="text" placeholder="" />
+        </div>
+        <div>
+          <label>Beskrivelse:</label><br />
+          <textarea
+            id="description"
+            placeholder="Legg til beskrivelse"
+          ></textarea>
+        </div>
+        <div class="signUpBox">
+          <button id="btnCreate" onclick="addItem()">Legg til</button>
+        </div>
+      </div>
     </div>
-  </section>
-</body>
 
+    <div class="main" id="main">
+      <span class="close" onclick="closeLogInPage()()">&times;</span>
+      <input type="checkbox" id="chk" aria-hidden="true">
+
+      <div class="signup">
+              <label for="chk" aria-hidden="true">Sign up</label>
+              <input id="fname" type="text" name="txt" placeholder="First name" required="">
+              <input id="lname" type="text" name="txt" placeholder="Last name" required="">
+              <input id="email" type="email" name="email" placeholder="Email" required="">
+              <input id="password" type="password" name="pswd" placeholder="Password" required="">
+              <button id="signinbtn" onclick="signUp()">Sign up</button>
+      </div>
+
+      <div class="login">
+              <label for="chk" aria-hidden="true">Login</label>
+              <input id="login-email" type="email" name="email" placeholder="Email" required="">
+              <input id="login-password" type="password" name="pswd" placeholder="Password" required="">
+              <button id="loginbtn" onclick="login()">Login</button>
+      </div>
+  </div>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-storage-compat.js"></script>
+  </body>
 </html>

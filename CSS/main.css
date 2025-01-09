@@ -1,76 +1,243 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --text-color: white;
+  --text-color: white;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background: no-repeat top/cover url('../BG-IMG/portfolio-home-bg.jpg');
-    z-index: 1;
+  font-family: "Roboto", sans-serif;
+  background: no-repeat top/cover url("../BG-IMG/portfolio-home-bg.jpg") fixed;
+  z-index: 1;
 }
 
 body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 150%;
-    height: 150%;
-    background: inherit;
-    filter: blur(40px);
-    z-index: -1;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 150%;
+  background: inherit;
+  filter: blur(50px);
+  z-index: -1;
 }
 
 .navbar {
-    width: 100%;
-    height: 5rem;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-items: space-between;
+  width: 100%;
+  height: 5rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: space-between;
 }
 
 .navbar .nav ul {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    margin-left: auto;
-    margin-right: 0;
-    list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 0;
+  list-style: none;
 }
 
-.nav a  {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 700;
-    font-size: 1.3rem;
+.nav a,
+.nav li {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 1.3rem;
+  cursor: pointer;
 }
 
 #home {
-    display: flex;
-    height: 100vh;          /* Full høgd for seksjonen */
-    padding: 1rem;          /* Litt padding for betre spacing */
+  display: flex;
+  height: 100vh; /* Full høgd for seksjonen */
+  padding: 1rem; /* Litt padding for betre spacing */
 }
 
 .introduction {
-    font-weight: 700;
-    color: var(--text-color);
-    display: flex;
-    flex-direction: column;
-    text-align: center;     /* Sentraliser teksten */
-    margin: 0 auto;         /* Auto margin for horisontal sentrering */
-    max-width: 600px;       /* Sett maks breidde for teksten */
-    width: 100%;            /* Tilpass breidda til skjermstorleiken */
-    height: fit-content;
-    line-height: 1.6;       /* Forbetre linjeavstand */
+  padding: 1.5rem 0;
+  font-weight: 700;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  text-align: center; /* Sentraliser teksten */
+  margin: 0 auto; /* Auto margin for horisontal sentrering */
+  max-width: 600px; /* Sett maks breidde for teksten */
+  width: 100%; /* Tilpass breidda til skjermstorleiken */
+  height: fit-content;
+  line-height: 1.6; /* Forbetre linjeavstand */
 }
 
 #vtmp {
-    font-size: 2rem;
+  font-size: 2rem;
+}
+
+/* Modal container styling */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+/* Modal content box */
+.add-modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* Center it */
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 8px;
+  width: 90%; /* 90% of the window width */
+  max-width: 500px; /* Limit the maximum width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Close button styling */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Input and textarea styling */
+input[type="text"],
+textarea {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Button styling */
+#btnCreate {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block;
+  margin: 10px auto;
+}
+
+#btnCreate:hover {
+  background-color: #45a049;
+}
+
+/* Adjust form labels */
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.main {
+  width: 350px;
+  height: 500px;
+  background: red;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 5px 20px 50px #000;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(104, 104, 104); /* Black background with opacity */
+}
+#chk {
+  display: none;
+}
+.signup {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.main label {
+  color: #fff;
+  font-size: 2.3em;
+  justify-content: center;
+  display: flex;
+  margin: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+.main input {
+  width: 60%;
+  height: 10px;
+  background: #e0dede;
+  justify-content: center;
+  display: flex;
+  margin: 20px auto;
+  padding: 12px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+.main button {
+  width: 60%;
+  height: 40px;
+  margin: 10px auto;
+  justify-content: center;
+  display: block;
+  color: #fff;
+  background: #573b8a;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 30px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+}
+.main button:hover {
+  background: #6d44b8;
+}
+.login {
+  height: 460px;
+  background: #eee;
+  border-radius: 60% / 10%;
+  transform: translateY(-180px);
+  transition: 0.8s ease-in-out;
+}
+.login label {
+  color: #573b8a;
+  transform: scale(0.6);
+}
+
+#chk:checked ~ .login {
+  transform: translateY(-500px);
+}
+#chk:checked ~ .login label {
+  transform: scale(1);
+}
+#chk:checked ~ .signup label {
+  transform: scale(0.6);
 }
